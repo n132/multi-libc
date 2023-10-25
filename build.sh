@@ -26,7 +26,7 @@ Install_Glibc_x64(){
     mkdir build
     cd build
     ../configure --prefix=/glibc/x64/$1/ --disable-werror --enable-debug=yes
-    make
+    make -j $(nproc)
     make install
     cd ../../
     rm -rf ./glibc-$1/build
@@ -46,7 +46,7 @@ Install_Glibc_x86(){
     mkdir build
     cd build
     ../configure --prefix=/glibc/x86/$1/ --disable-werror --enable-debug=yes --host=i686-linux-gnu --build=i686-linux-gnu CC="gcc -m32" CXX="g++ -m32" 
-    make
+    make -j $(nproc)
     make install
     cd ../../
     rm -rf ./glibc-$1/build
@@ -66,7 +66,7 @@ if [ -n "$GLIBC_VERSION" ]; then
     Install_Glibc_x86 $GLIBC_VERSION
     Delete_Glibc_Tar $GLIBC_VERSION
 else
-    for GLIBC_VERSION in '2.19' '2.23' '2.24' '2.25' '2.26' '2.27' '2.28' '2.29' 
+    for GLIBC_VERSION in '2.27' '2.31' '2.25' 
     do
         Get_Glibc_Source $GLIBC_VERSION
         Install_Glibc_x64 $GLIBC_VERSION
