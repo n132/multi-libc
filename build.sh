@@ -7,7 +7,7 @@ cd /glibc/source
 # get the source of glibc
 Get_Glibc_Source(){
     if [ ! -d "/glibc/source/glibc-"$1 ]; then
-        wget http://mirrors.ustc.edu.cn/gnu/libc/glibc-$1.tar.gz
+        wget http://ftp.gnu.org/gnu/libc/glibc-$1.tar.gz
         tar xf glibc-$1.tar.gz
     else
         echo "[*] /glibc/source/glibc-"$1" already exists..."
